@@ -45,7 +45,7 @@ $(document).ready(function () {
               // Get and display the result
               $('.loader').hide();
               $('#result').fadeIn(600);
-              $('#result').text(' Model Predict the Sneaker as:  ' + data);
+              $('#result').text(data);
               console.log('Success!');
           },
       });
