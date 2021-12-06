@@ -1,7 +1,7 @@
 # app.py
 import os
 import numpy as np
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, json
 from fastai.vision.all import *
 
 app = Flask(__name__)
@@ -49,7 +49,11 @@ def model_predict(img_path):
     predictions = list(zip(top_3_pred_classes, top_3_pred_probs))
     texts = [f'{idx+1}: {val[0]}, { "{:.1%}".format(val[1]) }' for idx, val in enumerate(predictions)]
 
-    return texts[0]
+    response = app.response_class(
+        response=json.dumps(texts),
+        mimetype='application/json'
+    )
+    return response
 
 if __name__ == '__main__':
     app.run(threaded=True, port=5000)

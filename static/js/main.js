@@ -45,7 +45,7 @@ $(document).ready(function () {
               // Get and display the result
               $('.loader').hide();
               $('#result').fadeIn(600);
-              $('#result').text(data);
+              $('#result').html(`<p>${data[0]}</p><p>${data[1]}</p><p>${data[2]}</p>`);
               console.log('Success!');
           },
       });
